@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ban Q. Tran — Ph.D. Candidate in Computer Science at Texas Tech University. Research in Quantum Machine Learning, Quantum Optimization, and Financial Technology.">
+<meta name="robots" content="index, follow">
+<title>Ban Q. Tran — Quantum Machine Learning</title>
+<style>
+  :root{
+    --accent:#8F0D0D;        /* PastelRed, from the CV */
+    --accent-dark:#450808;   /* DarkPastelRed */
+    --gold:#E7D192;
+    --ink:#2E2E2E;
+    --muted:#666;
+    --bg:#ffffff;
+    --card:#faf9f7;
+    --line:#e7e3db;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Sticky nav */
+  nav{
+    position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);
+    backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid var(--line);
+  }
+  nav .inner{max-width:var(--maxw);margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;gap:.25rem 1.1rem;align-items:center}
+  nav .brand{font-weight:700;color:var(--accent-dark);margin-right:auto}
+  nav a{color:var(--muted);font-size:.92rem;font-weight:500}
+  nav a:hover{color:var(--accent);text-decoration:none}
+
+  header.hero{
+    max-width:var(--maxw);margin:0 auto;padding:2.5rem 1.25rem 1rem;
+    display:flex;gap:1.8rem;align-items:center;flex-wrap:wrap;
+  }
+  header.hero img{
+    width:150px;height:150px;border-radius:50%;object-fit:cover;
+    border:4px solid var(--gold);box-shadow:0 4px 18px rgba(0,0,0,.12);
+  }
+  header .htext{flex:1;min-width:250px}
+  header h1{margin:0 0 .2rem;font-size:2rem;color:var(--accent-dark)}
+  header .role{margin:0 0 .5rem;color:var(--ink);font-weight:500}
+  header .tag{margin:0 0 .8rem;color:var(--accent);font-style:italic}
+  .links{display:flex;flex-wrap:wrap;gap:.5rem}
+  .links a{
+    display:inline-block;padding:.28rem .7rem;border:1px solid var(--line);
+    border-radius:999px;font-size:.85rem;color:var(--muted);background:var(--card);
+  }
+  .links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+  main{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem 3rem}
+  section{padding:1.8rem 0;border-top:1px solid var(--line)}
+  section h2{
+    font-size:1.35rem;color:var(--accent-dark);margin:.2rem 0 1rem;
+    display:inline-block;border-bottom:3px solid var(--gold);padding-bottom:.2rem;
+  }
+
+  /* Cards for experience/education */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:8px;padding:.9rem 1.1rem;margin-bottom:.9rem;
+  }
+  .card .top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .card .title{font-weight:700}
+  .card .where{color:var(--accent)}
+  .card .date{color:var(--muted);font-size:.88rem;white-space:nowrap}
+  .card p{margin:.35rem 0 0;color:var(--muted);font-size:.95rem}
+
+  /* Publications */
+  .pubgroup{margin-bottom:1.2rem}
+  .pubgroup h3{font-size:1.05rem;margin:.2rem 0 .6rem;color:var(--ink)}
+  ol.pubs{margin:0;padding-left:1.4rem}
+  ol.pubs li{margin-bottom:.7rem;font-size:.95rem}
+  ol.pubs .venue{color:var(--muted);font-style:italic}
+  ol.pubs b{color:var(--accent-dark)}
+
+  /* Skills */
+  .skillrow{display:flex;gap:.8rem;margin-bottom:.6rem;flex-wrap:wrap}
+  .skillrow .k{min-width:140px;font-weight:600;color:var(--accent-dark)}
+  .skillrow .v{flex:1;min-width:220px}
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem}
+  .tags span{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.15rem .55rem;font-size:.85rem;color:var(--ink)}
+
+  footer{max-width:var(--maxw);margin:0 auto;padding:1.5rem 1.25rem 3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+  @media (max-width:560px){
+    header.hero{padding-top:1.6rem}
+    header h1{font-size:1.6rem}
+    nav .brand{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <span class="brand">Ban Q. Tran</span>
+    <a href="#about">About</a>
+    <a href="#education">Education &amp; Experience</a>
+    <a href="#publications">Publications</a>
+    <a href="#skills">Skills &amp; Awards</a>
+  </div>
+</nav>
+
+<header class="hero" id="about">
+  <img src="images/photo.jpg" alt="Ban Q. Tran">
+  <div class="htext">
+    <h1>Ban Q. Tran</h1>
+    <p class="role">Ph.D. Candidate in Computer Science, <a href="https://www.depts.ttu.edu/cs/">Texas Tech University</a>, USA</p>
+    <p class="tag">Quantum Machine Learning &middot; Quantum Optimization &middot; Financial Technology</p>
+    <div class="links">
+      <a href="mailto:billytran1804@gmail.com">✉ billytran1804@gmail.com</a>
+      <a href="mailto:bantran@ttu.edu">✉ bantran@ttu.edu</a>
+      <a href="https://scholar.google.com/citations?user=SXaU_Y8AAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://orcid.org/0000-0002-4100-5217">ORCID</a>
+      <a href="https://github.com/billytran2404">GitHub</a>
+      <a href="https://www.linkedin.com/in/ban-tran-571154117/">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="overview">
+    <h2>About</h2>
+    <p>
+      I am a Ph.D. candidate in Computer Science at Texas Tech University, where I hold Teaching Assistant
+      and Distinguished Graduate Student Assistantships. My research focuses on <b>Quantum Machine Learning</b>,
+      with particular interest in <b>quantum neural networks</b>, <b>quantum physics-informed neural networks (QPINNs)</b>,
+      <b>quantum kernel methods</b>, and <b>quantum optimization</b>, as well as applications in <b>financial technology</b>.
+    </p>
+    <p>
+      Before returning to research, I spent more than a decade in industry and education — twelve years as a
+      software engineer, business analyst and project manager at FPT Software (with onsite delivery in Malaysia
+      and the United States), followed by six years as an instructor and senior teacher at FPT University. This
+      combination of engineering practice and teaching shapes how I approach research problems today.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2>Education &amp; Experience</h2>
+
+    <h3 style="color:var(--ink);font-size:1.05rem;margin:.2rem 0 .7rem">Education</h3>
+
+    <div class="card">
+      <div class="top"><span class="title">Ph.D. Candidate in Computer Science</span><span class="date">Sept. 2023 – Present</span></div>
+      <span class="where">Texas Tech University, USA</span>
+      <p>Research area: Quantum Machine Learning. GPA 4.0. Teaching Assistant and Distinguished Graduate Student Assistantships.</p>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="title">M.Sc. in Data Mining for IoT</span><span class="date">Sept. 2019 – Nov. 2021</span></div>
+      <span class="where">La Rochelle Université (France) &amp; University of Science and Technology of Hanoi (USTH), Vietnam</span>
+      <p>Thesis: <i>Towards formal verification of Blockchain-based IoT applications</i>. GPA 13.4 / 20 (Average Good).</p>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="title">M.Econ. in Economic Management</span><span class="date">Oct. 2015 – Oct. 2017</span></div>
+      <span class="where">National University of Vietnam</span>
+      <p>Overall GPA 16 / 20 (Good).</p>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="title">B.Sc. in Electronics and Telecommunication Engineering</span><span class="date">Sept. 1999 – June 2004</span></div>
+      <span class="where">Hanoi University of Science and Technology (HUST)</span>
+      <p>Thesis: <i>Proposed algorithms for searching and classifying images on the internet</i>. Overall GPA 15 / 20 (Good).</p>
+    </div>
+
+    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Experience</h3>
+
+    <div class="card">
+      <div class="top"><span class="title">Teaching &amp; Research Assistant</span><span class="date">Aug. 2023 – Present</span></div>
+      <span class="where">Department of Computer Science, Texas Tech University, Lubbock, USA</span>
+      <p>Grading, teaching and research in Quantum Machine Learning.</p>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="title">Instructor / Senior Teacher</span><span class="date">Apr. 2017 – Aug. 2023</span></div>
+      <span class="where">Computer Fundamental Department, FPT University, Hanoi, Vietnam</span>
+      <p>Teaching, coaching and training.</p>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="title">Software Engineer</span><span class="date">Apr. 2005 – Apr. 2017</span></div>
+      <span class="where">FPT Software, Hanoi, Vietnam</span>
+      <p>Software development, business analysis and project management; onsite delivery in Malaysia and the United States.</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pubgroup">
+      <h3>Books &amp; Chapters</h3>
+      <ol class="pubs">
+        <li><b>B. Q. Tran</b>, C. K. Luong, and S. Mengel, “Quantum Patches for Efficient Learning,” in <span class="venue">Multi-disciplinary Trends in Artificial Intelligence — Lecture Notes in Computer Science</span>, Springer, 2025.</li>
+      </ol>
+    </div>
+
+    <div class="pubgroup">
+      <h3>Journal Articles</h3>
+      <ol class="pubs">
+        <li>B. Thacker, J. Wang, Y. Zhang, <b>Q. B. Tran</b>, D. S. Vemula, and T. Kushimo, “From research to resources: assessing student understanding and skills in quantum computing,” <span class="venue">European Journal of Physics</span>, vol. 47, no. 1, p. 015702, 2025.</li>
+        <li>N. T. Son, B. N. Anh, <b>T. Q. Ban</b>, L. P. Chi, B. D. Chien, D. X. Hoa, <i>et al.</i>, “Implementing CCTV-based attendance taking support system using deep face recognition: A case study at FPT polytechnic college,” <span class="venue">Symmetry</span>, vol. 12, no. 2, p. 307, 2020.</li>
+        <li>P. N. Giao, N. T. Son, B. N. Anh, <b>T. Q. Ban</b>, T. V. Dinh, and S.-H. Lee, “Edges of interpolating tetrahedron based encryption algorithm for 3D printing model,” <span class="venue">Journal of Advances in Information Technology</span>, vol. 11, no. 2, 2020.</li>
+        <li>N. T. Son, B. N. Anh, <b>T. Q. Ban</b>, and T. B. Duong, “A method to construct automatic object bounding-box estimation system using 3D cameras,” <span class="venue">International Journal of Science and Research (IJSR)</span>, vol. 6, no. 7, pp. 961–965, 2017.</li>
+      </ol>
+    </div>
+
+    <div class="pubgroup">
+      <h3>Conference Proceedings</h3>
+      <ol class="pubs">
+        <li>A. H. Nguyen, D. M. Nguyen, A. D. Do, L. T. H. Nguyen, M. H. Pham, A. T. M. Do, and <b>B. Q. Tran</b>, “Integration of AI in STEM education: A systematic review,” in <span class="venue">Proc. 2025 14th Int. Conf. on Software and Computer Applications</span>, 2025, pp. 327–335.</li>
+        <li>N. T. Duong, K. T. Hoang, K. Q. Duong, D. Q. Dinh, H. D. Le, T. H. Nguyen, B. X. Duong, <b>B. Q. Tran</b>, and A. N. Bui, “Investigating market strength prediction with CNNs on candlestick chart images,” in <span class="venue">Proc. 2024 6th Asia Conf. on Machine Learning and Computing</span>, 2024, pp. 120–127.</li>
+        <li>D. T. Nguyen, <b>B. Q. Tran</b>, A. D. Tran, D. T. Than, and D. Q. Tran, “Object detection approach for stock chart patterns recognition in financial markets,” in <span class="venue">Proc. 2023 12th Int. Conf. on Software and Computer Applications</span>, 2023, pp. 150–158.</li>
+        <li>A. T. Tran, <b>B. Q. Tran</b>, and K. T. Luong, “Improvement for large-scale image data using fuzzy rough C-mean based unsupervised CNN clustering: An empirical study on designbyhumans.com,” in <span class="venue">Proc. 2023 12th Int. Conf. on Software and Computer Applications</span>, 2023, pp. 1–7.</li>
+        <li>T. Duc Phung, T. Van Nguyen, and <b>B. Quy Tran</b>, “Design and implementation a secured and distributed system using CBC, socket, and RMI technologies,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 238–243.</li>
+        <li><b>B. Quy Tran</b>, T. Van Nguyen, D. Duy Tran, A. Duy Tran, and H. Van Nguyen, “Accelerating exemplar-based image inpainting with GPU and CUDA,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 173–179.</li>
+        <li><b>B. Quy Tran</b>, T. Van Nguyen, T. Duc Phung, V. Tan Nguyen, D. Duy Tran, and S. Tung Ngo, “Fu Covid-19 AI agent built on attention algorithm using a combination of transformer, ALBERT model, and Rasa framework,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 22–31.</li>
+        <li><b>T. Q. Ban</b>, P. L. Duong, N. H. Son, and T. Van Dinh, “Covid-19 disease simulation using GAMA platform,” in <span class="venue">2020 Int. Conf. on Computational Intelligence (ICCI)</span>, IEEE, 2020, pp. 246–251.</li>
+        <li><b>T. Q. Ban</b>, T. T. T. Nguyen, V. T. Long, P. D. Dung, and B. T. Tung, “A benchmarking of the effectiveness of modular exponentiation algorithms using the library GMP in C language,” in <span class="venue">2020 Int. Conf. on Computational Intelligence (ICCI)</span>, IEEE, 2020, pp. 237–241.</li>
+        <li><b>T. Q. Ban</b>, B. N. Anh, N. T. Son, and T. Van Dinh, “Survey of hyperledger blockchain frameworks: Case study in FPT university's cryptocurrency wallets,” in <span class="venue">Proc. 2019 8th Int. Conf. on Software and Computer Applications</span>, 2019, pp. 472–480.</li>
+        <li>N. T. Son, L. Van Thanh, <b>T. Q. Ban</b>, D. X. Hoa, and B. N. Anh, “An analyze on effectiveness of candlestick reversal patterns for Vietnamese stock market,” in <span class="venue">Proc. 1st Int. Conf. on Information Management and Management Science</span>, 2018, pp. 89–93.</li>
+      </ol>
+    </div>
+
+    <p style="color:var(--muted);font-size:.9rem">Full and up-to-date list on <a href="https://scholar.google.com/citations?user=SXaU_Y8AAAAJ&amp;hl=en">Google Scholar</a>.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills &amp; Awards</h2>
+
+    <div class="skillrow"><div class="k">Research</div><div class="v">Quantum Machine Learning, Quantum Optimization, Financial Technology</div></div>
+
+    <div class="skillrow"><div class="k">Programming</div><div class="v tags">
+      <span>C</span><span>C++</span><span>Python</span><span>Java</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span><span>Rust</span><span>Golang</span><span>Solidity</span><span>Motoko</span><span>HTML</span>
+    </div></div>
+
+    <div class="skillrow"><div class="k">Frameworks</div><div class="v tags">
+      <span>Flutter</span><span>React</span><span>Node.js</span><span>TensorFlow</span><span>Keras</span><span>Transformer</span>
+    </div></div>
+
+    <div class="skillrow"><div class="k">Languages</div><div class="v">English (fluent), Vietnamese (native), French (intermediate)</div></div>
+
+    <div class="skillrow"><div class="k">Soft skills</div><div class="v">Hard-working, active listening, teamwork, problem-solving, constructive criticism</div></div>
+
+    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Awards &amp; Assistantships</h3>
+    <div class="card">
+      <div class="top"><span class="title">Distinguished Graduate Student Assistantship</span><span class="date">2023</span></div>
+      <span class="where">Texas Tech University</span>
+    </div>
+    <div class="card">
+      <div class="top"><span class="title">Teaching Assistantship</span><span class="date">2023</span></div>
+      <span class="where">Department of Computer Science, Texas Tech University</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>References available on request. &nbsp;·&nbsp; © 2026 Ban Q. Tran &nbsp;·&nbsp; Built with plain HTML &amp; CSS, hosted on GitHub Pages.</p>
+</footer>
+
+</body>
+</html>
