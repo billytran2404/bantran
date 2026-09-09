@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ban Q. Tran — Ph.D. Candidate in Computer Science at Texas Tech University. Research in Quantum Machine Learning, Quantum Optimization, Quantum Security, and Financial Technology.">
+<meta name="description" content="Ban Q. Tran — Ph.D. Candidate in Computer Science at Texas Tech University and study-abroad mentor. Three countries, three funded degrees: Vietnam, France, and the United States. Mentoring Vietnamese students toward funded graduate study abroad.">
 <meta name="robots" content="index, follow">
-<title>Ban Q. Tran — Quantum Machine Learning</title>
+<title>Ban Q. Tran — Researcher &amp; Study-Abroad Mentor</title>
 <style>
   :root{
-    --accent:#8F0D0D;        /* PastelRed, from the CV */
-    --accent-dark:#450808;   /* DarkPastelRed */
+    --accent:#8F0D0D;
+    --accent-dark:#450808;
     --gold:#E7D192;
     --ink:#2E2E2E;
     --muted:#666;
@@ -27,7 +27,6 @@
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* Sticky nav */
   nav{
     position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);
     backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid var(--line);
@@ -36,6 +35,8 @@
   nav .brand{font-weight:700;color:var(--accent-dark);margin-right:auto}
   nav a{color:var(--muted);font-size:.92rem;font-weight:500}
   nav a:hover{color:var(--accent);text-decoration:none}
+  nav a.cta{color:#fff;background:var(--accent);padding:.25rem .75rem;border-radius:999px}
+  nav a.cta:hover{background:var(--accent-dark);color:#fff}
 
   header.hero{
     max-width:var(--maxw);margin:0 auto;padding:2.5rem 1.25rem 1rem;
@@ -62,8 +63,39 @@
     font-size:1.35rem;color:var(--accent-dark);margin:.2rem 0 1rem;
     display:inline-block;border-bottom:3px solid var(--gold);padding-bottom:.2rem;
   }
+  h3.sub{color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem}
+  h3.sub:first-of-type{margin-top:.2rem}
 
-  /* Cards for experience/education */
+  /* Fact strip */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:1.2rem 0 .4rem}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+  .fact .n{display:block;font-size:1.5rem;font-weight:700;color:var(--accent-dark);line-height:1.2}
+  .fact .l{font-size:.82rem;color:var(--muted)}
+
+  /* Journey timeline */
+  .timeline{border-left:3px solid var(--gold);margin:.6rem 0 0;padding-left:1.2rem}
+  .tl-item{position:relative;padding-bottom:1.2rem}
+  .tl-item::before{
+    content:"";position:absolute;left:-1.62rem;top:.45rem;width:.7rem;height:.7rem;
+    border-radius:50%;background:var(--accent);border:2px solid #fff;
+  }
+  .tl-item .yr{font-size:.85rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+  .tl-item .hd{font-weight:700;color:var(--accent-dark)}
+  .tl-item p{margin:.25rem 0 0;font-size:.95rem;color:var(--muted)}
+  .tl-item .flag{font-size:.8rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+
+  /* Offer cards */
+  .offers{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.4rem}
+  .offer{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:8px;padding:1rem 1.1rem}
+  .offer h4{margin:0 0 .4rem;font-size:1rem;color:var(--accent-dark)}
+  .offer p{margin:0;font-size:.93rem;color:var(--muted)}
+
+  .callout{
+    background:#fdf7f7;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:8px;padding:1rem 1.1rem;margin:1.1rem 0;font-size:.95rem;
+  }
+  .callout b{color:var(--accent-dark)}
+
   .card{
     background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);
     border-radius:8px;padding:.9rem 1.1rem;margin-bottom:.9rem;
@@ -74,29 +106,39 @@
   .card .date{color:var(--muted);font-size:.88rem;white-space:nowrap}
   .card p{margin:.35rem 0 0;color:var(--muted);font-size:.95rem}
 
-  /* Publications */
   .pubgroup{margin-bottom:1.2rem}
   .pubgroup h3{font-size:1.05rem;margin:.2rem 0 .6rem;color:var(--ink)}
   ol.pubs{margin:0;padding-left:1.4rem}
   ol.pubs li{margin-bottom:.7rem;font-size:.95rem}
   ol.pubs .venue{color:var(--muted);font-style:italic}
   ol.pubs b{color:var(--accent-dark)}
+  details.more{margin-top:.6rem}
+  details.more summary{cursor:pointer;color:var(--accent);font-size:.93rem;font-weight:600}
+  details.more[open] summary{margin-bottom:.6rem}
 
-  /* Skills */
   .skillrow{display:flex;gap:.8rem;margin-bottom:.6rem;flex-wrap:wrap}
   .skillrow .k{min-width:140px;font-weight:600;color:var(--accent-dark)}
   .skillrow .v{flex:1;min-width:220px}
   .tags{display:flex;flex-wrap:wrap;gap:.4rem}
   .tags span{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.15rem .55rem;font-size:.85rem;color:var(--ink)}
 
-  /* Simple two-column lists (teaching, reviewing) */
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.4rem}
   ul.plain{margin:.2rem 0;padding-left:1.2rem}
   ul.plain li{margin-bottom:.3rem;font-size:.95rem}
   .subk{font-weight:600;color:var(--accent-dark);margin:.2rem 0}
 
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;padding:.55rem 1.2rem;
+    border-radius:999px;font-weight:600;font-size:.95rem;margin-top:.6rem;
+  }
+  .btn:hover{background:var(--accent-dark);color:#fff;text-decoration:none}
+
   footer{max-width:var(--maxw);margin:0 auto;padding:1.5rem 1.25rem 3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 
+  @media (max-width:700px){
+    .facts{grid-template-columns:1fr 1fr}
+    .offers{grid-template-columns:1fr}
+  }
   @media (max-width:560px){
     header.hero{padding-top:1.6rem}
     header h1{font-size:1.6rem}
@@ -111,12 +153,12 @@
   <div class="inner">
     <span class="brand">Ban Q. Tran</span>
     <a href="#about">About</a>
-    <a href="#education">Education &amp; Experience</a>
+    <a href="#journey">My Journey</a>
+    <a href="#mentoring">Mentoring</a>
+    <a href="#research">Research</a>
     <a href="#teaching">Teaching</a>
     <a href="#publications">Publications</a>
-    <a href="#service">Service &amp; Awards</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact" class="cta">Work with me</a>
   </div>
 </nav>
 
@@ -124,8 +166,9 @@
   <img src="images/photo.png" alt="Ban Q. Tran">
   <div class="htext">
     <h1>Ban Q. Tran</h1>
-    <p class="role">Ph.D. Candidate in Computer Science, <a href="https://www.depts.ttu.edu/cs/">Texas Tech University</a>, USA</p>
-    <p class="tag">Quantum Machine Learning &middot; Quantum Optimization &middot; Quantum Security &middot; Financial Technology</p>
+    <p class="role">Ph.D. Candidate in Computer Science, <a href="https://www.depts.ttu.edu/cs/">Texas Tech University</a>, USA<br>
+    Study-abroad mentor for Vietnamese students</p>
+    <p class="tag">Vietnam → France → United States · three degrees, all funded</p>
     <div class="links">
       <a href="mailto:billytran1804@gmail.com">✉ billytran1804@gmail.com</a>
       <a href="mailto:bantran@ttu.edu">✉ bantran@ttu.edu</a>
@@ -143,42 +186,206 @@
   <section id="overview">
     <h2>About</h2>
     <p>
-      I am a Ph.D. candidate in Computer Science at Texas Tech University, where I hold Teaching Assistant
-      and Distinguished Graduate Student Assistantships. My research focuses on <b>Quantum Machine Learning</b>,
-      with particular interest in <b>quantum neural networks</b>, <b>quantum physics-informed neural networks (QPINNs)</b>,
-      <b>quantum kernel methods</b>, <b>quantum optimization</b>, and the <b>robustness and security of quantum
-      machine learning models</b>, as well as applications in <b>financial technology</b>.
+      I am a Ph.D. candidate in Computer Science at Texas Tech University, working on
+      <b>quantum machine learning</b> under a Distinguished Graduate Student Assistantship.
+      I am also, and just as deliberately, a mentor to Vietnamese students who want to study abroad.
     </p>
     <p>
-      Before returning to research, I spent more than a decade in industry and education — twelve years as a
-      software engineer, business analyst and project manager at FPT Software (with onsite delivery in Malaysia
-      and the United States), followed by six years as an instructor and senior teacher at FPT University. This
-      combination of engineering practice and teaching shapes how I approach research problems today.
+      I did not take the fast route. I finished my engineering degree at HUST in 2004, spent twelve years
+      building software at FPT Software, taught for six years at FPT University, and only then went abroad —
+      first to France on an <b>Erasmus Mundus joint programme</b>, then to the United States on a
+      <b>funded Ph.D. assistantship</b>. I started my doctorate at an age when most people have decided that
+      door has closed. It had not.
     </p>
+    <p>
+      That is the reason this page exists. I know the Vietnamese application pipeline from the inside — as an
+      applicant who was rejected before he was accepted, as a lecturer who wrote hundreds of recommendation
+      letters, and now as a researcher who sits on the other side of the table, reviewing for
+      <i>Pattern Recognition</i> and <i>Neural Networks</i> and reading student work every semester.
+    </p>
+
+    <div class="facts">
+      <div class="fact"><span class="n">3</span><span class="l">countries studied in</span></div>
+      <div class="fact"><span class="n">4</span><span class="l">degrees earned</span></div>
+      <div class="fact"><span class="n">22+</span><span class="l">university courses taught</span></div>
+      <div class="fact"><span class="n">21</span><span class="l">published papers</span></div>
+    </div>
   </section>
 
-  <section id="education">
-    <h2>Education &amp; Experience</h2>
+  <section id="journey">
+    <h2>My Study-Abroad Journey</h2>
+    <p style="color:var(--muted);font-size:.95rem;margin-top:0">
+      The route below is the honest version — including the twelve years in industry that most advice columns
+      would call a gap.
+    </p>
 
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:.2rem 0 .7rem">Education</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1999 – 2004</div>
+        <div class="hd">B.Sc. in Electronics and Telecommunication Engineering</div>
+        <span class="flag">Vietnam</span>
+        <p>Hanoi University of Science and Technology (HUST), five-year Engineer programme.
+        Thesis on image search and classification algorithms, marked 9.87 / 10.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2005 – 2017</div>
+        <div class="hd">Twelve years in industry — FPT Software</div>
+        <span class="flag">Vietnam · Malaysia · USA</span>
+        <p>Software engineer, business analyst, then project manager, with onsite delivery in Malaysia and the
+        United States. My first working experience abroad came from a job, not a scholarship.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2015 – 2017</div>
+        <div class="hd">M.Econ. in Economic Management</div>
+        <span class="flag">Vietnam</span>
+        <p>National University of Vietnam, studied part-time alongside full-time work.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2017 – 2023</div>
+        <div class="hd">Instructor / Senior Teacher — FPT University</div>
+        <span class="flag">Vietnam</span>
+        <p>Seventeen undergraduate courses, from introductory Python to Deep Learning and Ethics in IT.
+        This is where I began advising students on applications in a serious way.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2019 – 2021</div>
+        <div class="hd">Joint M.Sc. in Data Mining for IoT — <i>fully funded</i></div>
+        <span class="flag">France · Vietnam</span>
+        <p>La Rochelle Université (France) and USTH (Vietnam), joint programme, with an
+        <b>Erasmus Mundus Joint Programme</b> award and a research position at
+        <b>LIPN</b>, Université Sorbonne Paris Nord. Thesis: formal verification of blockchain-based IoT
+        applications.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2023 – present</div>
+        <div class="hd">Ph.D. in Computer Science — <i>fully funded</i></div>
+        <span class="flag">United States</span>
+        <p>Texas Tech University, on a <b>Distinguished Graduate Student Assistantship</b> plus a Teaching
+        Assistantship. GPA 4.0. Research in quantum machine learning, quantum optimization and quantum
+        cybersecurity. Best Poster Award at IEEE QCCL 2026.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>What I take from this:</b> the funding existed at every step, but it was never advertised to me.
+      I found the Erasmus Mundus programme through a colleague, and the Texas Tech assistantship through a
+      cold email to a professor whose paper I had actually read. Most students I meet are not short on
+      ability — they are short on knowing which doors exist and how to knock on them.
+    </div>
+  </section>
+
+  <section id="mentoring">
+    <h2>Study-Abroad Mentoring</h2>
+    <p style="margin-top:0">
+      I work with a small number of Vietnamese students each cycle, mainly those applying to
+      <b>funded master's and Ph.D. programmes</b> in computer science, engineering and related fields in the
+      United States and Europe. I am not an agency and I do not take a commission from any university.
+    </p>
+
+    <h3 class="sub">What I help with</h3>
+    <div class="offers">
+      <div class="offer">
+        <h4>Finding the right programmes</h4>
+        <p>Building a realistic list — reach, match and safety — based on your actual profile rather than
+        rankings. Identifying which programmes are funded and which quietly are not.</p>
+      </div>
+      <div class="offer">
+        <h4>Contacting professors</h4>
+        <p>How to read a paper well enough to write a cold email that gets answered, and how to follow up
+        without becoming noise. This is the single highest-leverage step for funded Ph.D. admission.</p>
+      </div>
+      <div class="offer">
+        <h4>Statement of purpose &amp; CV</h4>
+        <p>Structuring a research narrative that a committee can follow. I read what you wrote and tell you
+        what an admissions reader will actually think — not what you hope they will think.</p>
+      </div>
+      <div class="offer">
+        <h4>Recommendation letters</h4>
+        <p>Choosing referees, briefing them properly, and what a strong letter contains. I have written many
+        from the lecturer's side and read many from the reviewer's side.</p>
+      </div>
+      <div class="offer">
+        <h4>Scholarships &amp; assistantships</h4>
+        <p>Erasmus Mundus, university assistantships, departmental fellowships, and the timing that decides
+        whether you are considered for them at all.</p>
+      </div>
+      <div class="offer">
+        <h4>Research experience before you apply</h4>
+        <p>How to get a first publication or a real project on your CV while still in Vietnam. Several of my
+        co-authors were undergraduates when we started.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">Why my advice is worth taking — and where it is not</h3>
+    <p>
+      I have been through the process as a Vietnamese applicant twice, to two different systems, at an age that
+      made both harder. I teach at a U.S. department and see admitted students' files and their first two years.
+      I review for two Q1 Elsevier journals and four international conferences, so I know what "research
+      potential" reads like on paper.
+    </p>
+    <p>
+      What I am <i>not</i>: an immigration lawyer, a visa service, or an expert on undergraduate admissions,
+      the UK, Australia, or non-technical fields. If your question is in one of those areas I will say so and
+      point you elsewhere rather than guess.
+    </p>
+
+    <h3 class="sub">Students I have worked with</h3>
+    <p style="color:var(--muted);font-size:.95rem">
+      <!-- TODO (Ban): replace this paragraph with real, verifiable outcomes before publishing.
+           Suggested format, one line each, only what you can stand behind:
+             • "N. V. A. — M.Sc., KTH Royal Institute of Technology, Sweden, funded, 2025"
+             • "T. H. L. — Ph.D., University of Adelaide, Australia, full scholarship, 2024"
+           If you have written testimonials, add two or three short quotes with the student's initials
+           and consent. Do NOT publish aggregate numbers ("50+ students placed") unless you can document them —
+           parents and students do check, and an unverifiable claim costs more credibility than it buys. -->
+      Placement outcomes and student testimonials are listed here once each student has given consent.
+      If you would like to speak with a former mentee before deciding, write to me and I will put you in touch.
+    </p>
+
+    <p style="margin-top:1rem">
+      Mentoring places are limited and I take them on outside my research and teaching hours, so I usually work
+      with a handful of students per application cycle.
+    </p>
+    <a class="btn" href="#contact">Ask about mentoring →</a>
+  </section>
+
+  <section id="research">
+    <h2>Research &amp; Academic Background</h2>
+
+    <h3 class="sub">Current research</h3>
+    <p>
+      My work is in <b>quantum machine learning</b>: quantum neural networks, quantum physics-informed neural
+      networks (QPINNs) for partial differential equations, quantum kernel methods, quantum optimization, and
+      the robustness and security of quantum machine learning models, with applications in financial
+      technology. My recent work is joint with collaborators in Denmark and Portugal.
+    </p>
+
+    <h3 class="sub">Education</h3>
 
     <div class="card">
       <div class="top"><span class="title">Ph.D. Candidate in Computer Science</span><span class="date">Sept. 2023 – Present</span></div>
       <span class="where">Texas Tech University, USA</span>
-      <p>Research area: Quantum Machine Learning. GPA 4.0. Teaching Assistant and Distinguished Graduate Student Assistantships.</p>
+      <p>Advisor: Assoc. Prof. Susan Mengel. Quantum machine learning, quantum optimization, quantum
+      cybersecurity. GPA 4.0. Distinguished Graduate Student Assistantship and Teaching Assistantship.</p>
     </div>
 
     <div class="card">
-      <div class="top"><span class="title">M.Sc. in Data Mining for IoT</span><span class="date">Sept. 2019 – Nov. 2021</span></div>
+      <div class="top"><span class="title">Joint M.Sc. in Data Mining for IoT</span><span class="date">Sept. 2019 – Nov. 2021</span></div>
       <span class="where">La Rochelle Université (France) &amp; University of Science and Technology of Hanoi (USTH), Vietnam</span>
-      <p>Joint programme. Thesis: <i>Towards formal verification of Blockchain-based IoT applications</i>.
-      GPA 3.22 / 4.00, as evaluated course-by-course by Educational Credential Evaluators (ECE), January 2024.</p>
+      <p>Advisor: Dr. Kais Klai, Université Sorbonne Paris Nord. Thesis: <i>Towards formal verification of
+      blockchain-based IoT applications</i>. GPA 3.22 / 4.00 as evaluated course-by-course by Educational
+      Credential Evaluators (ECE), January 2024.</p>
     </div>
 
     <div class="card">
       <div class="top"><span class="title">M.Econ. in Economic Management</span><span class="date">Oct. 2015 – Oct. 2017</span></div>
       <span class="where">National University of Vietnam</span>
-      <p>Academic classification: <i>Good</i>.</p>
+      <p>Advisor: Dr. Tuyen Nguyen. Academic classification: <i>Good</i>.</p>
     </div>
 
     <div class="card">
@@ -189,61 +396,103 @@
       <i>Good</i> (Khá).</p>
     </div>
 
-    <p style="color:var(--muted);font-size:.88rem;margin:.4rem 0 0">
-      Vietnamese institutions grade on a 10-point scale where 5.0 is the minimum pass and marks above 8.0 are
-      uncommon; the figures above are reported on their original scales rather than converted, since conversion
-      is the evaluator's job and not mine. A formal U.S. credential evaluation of the undergraduate degree is
-      in progress.
-    </p>
-
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Experience</h3>
+    <h3 class="sub">Experience</h3>
 
     <div class="card">
       <div class="top"><span class="title">Teaching &amp; Research Assistant</span><span class="date">Aug. 2023 – Present</span></div>
       <span class="where">Department of Computer Science, Texas Tech University, Lubbock, USA</span>
-      <p>Grading, teaching and research in Quantum Machine Learning.</p>
+      <p>Teaching, grading and research in quantum machine learning.</p>
     </div>
 
     <div class="card">
       <div class="top"><span class="title">Instructor / Senior Teacher</span><span class="date">Apr. 2017 – Aug. 2023</span></div>
       <span class="where">Computer Fundamental Department, FPT University, Hanoi, Vietnam</span>
-      <p>Teaching, coaching and training.</p>
+      <p>Teaching, coaching and training across seventeen undergraduate courses.</p>
     </div>
 
     <div class="card">
       <div class="top"><span class="title">Software Engineer / Project Manager</span><span class="date">Apr. 2005 – Apr. 2017</span></div>
       <span class="where">FPT Software, Hanoi, Vietnam</span>
-      <p>Software development, business analysis, and project management; onsite delivery in Malaysia and the United States.</p>
+      <p>Software development, business analysis and project management; onsite delivery in Malaysia and the
+      United States.</p>
     </div>
 
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Research Internships</h3>
+    <h3 class="sub">Research internships</h3>
 
     <div class="card">
       <div class="top"><span class="title">Formal Verification of Blockchain-based IoT Applications</span><span class="date">2021</span></div>
-      <span class="where">L.I.P.N, Paris 13 Sorbonne Nord, France</span>
+      <span class="where">LIPN, Université Sorbonne Paris Nord, France</span>
       <p>Model checking with Coloured Petri Nets (VueJS + Golang, Helena, Node-RED).</p>
     </div>
 
     <div class="card">
       <div class="top"><span class="title">Vietnamese Spelling Correction using Deep Learning</span><span class="date">2020</span></div>
-      <span class="where">U.S.T.H Lab, Hanoi, Vietnam</span>
-      <p>Natural Language Processing with TensorFlow, Keras and Transformer.</p>
+      <span class="where">USTH Lab, Hanoi, Vietnam</span>
+      <p>Natural language processing with TensorFlow, Keras and Transformers.</p>
+    </div>
+
+    <h3 class="sub">Scholarships, awards and service</h3>
+    <div class="grid2">
+      <div>
+        <p class="subk">Scholarships &amp; assistantships</p>
+        <ul class="plain">
+          <li>Distinguished Graduate Student Assistantship — Texas Tech University, 2023</li>
+          <li>Teaching Assistantship — Dept. of Computer Science, Texas Tech University, 2023</li>
+          <li>Erasmus Mundus Joint Programmes — Université Sorbonne Paris Nord, France, 2021</li>
+          <li>LIPN research position — Université Sorbonne Paris Nord, France, 2021</li>
+        </ul>
+        <p class="subk" style="margin-top:.9rem">Awards</p>
+        <ul class="plain">
+          <li>Best Poster Award — IEEE QCCL 2026</li>
+          <li>Quantum Project Certificate of Completion — Washington Institute for STEM, Entrepreneurship and Research, 2025</li>
+          <li>Top 7 Finalist — WISER Quantum Program 2025, BQP Challenges</li>
+          <li>Development of Novel Quantum Algorithms Program — Womanium, 2024</li>
+        </ul>
+      </div>
+      <div>
+        <p class="subk">Journal reviewer</p>
+        <ul class="plain">
+          <li>Pattern Recognition — Q1, Elsevier</li>
+          <li>Neural Networks — Q1, Elsevier</li>
+        </ul>
+        <p class="subk" style="margin-top:.9rem">Conference reviewer</p>
+        <ul class="plain">
+          <li>ICTA 2026 — 5th Int. Conf. on Advances in Information and Communication Technology</li>
+          <li>QUANCOM 2026 — Int. Conf. on Quantum Computing Infrastructure and Technologies</li>
+          <li>CIDDF 2025 — Int. Conf. in Cybersecurity, IoT, Data Science and Digital Forensics</li>
+          <li>ICSCA 2019 — 8th Int. Conf. on Software and Computer Applications</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="teaching">
     <h2>Teaching</h2>
+    <p style="margin-top:0;color:var(--muted);font-size:.95rem">
+      Twenty-two university courses across two countries and two education systems — which is a large part of
+      why I can tell a student what a U.S. department will expect of them in their first semester.
+    </p>
     <div class="grid2">
       <div>
         <p class="subk">FPT University, Vietnam — Lecturer</p>
         <ul class="plain">
           <li>PFP131 — Programming Fundamentals with Python</li>
-          <li>APO201c — Advanced Python with OOP</li>
-          <li>CSD203 — Data Structure and Algorithm with Python</li>
-          <li>DBI202 — Database System</li>
+          <li>PRF192 — Programming Fundamentals with C</li>
+          <li>PRO192 — Object-Oriented Programming (Java)</li>
+          <li>PRJ301 — Java Web Application Development</li>
+          <li>PCP291 — C++ Programming</li>
+          <li>CSI106 — Introduction to Computer Science</li>
+          <li>CSD201 — Data Structures and Algorithms</li>
+          <li>DBI202 — Introduction to Database Systems</li>
+          <li>SWE201 — Introduction to Software Engineering</li>
+          <li>SWT301 — Software Testing</li>
+          <li>PMG201 — Project Management</li>
+          <li>ITA203 — Management Information Systems</li>
+          <li>APO201 — Advanced Python with OOP</li>
           <li>AIL304m — Machine Learning</li>
           <li>DPL303m — Deep Learning</li>
-          <li>ITE302c — Ethics in IT</li>
+          <li>HCI201 — Human–Computer Interaction</li>
+          <li>ITE302 — Ethics in IT</li>
         </ul>
       </div>
       <div>
@@ -253,6 +502,7 @@
           <li>CS2365 — Object-Oriented Programming</li>
           <li>CS3368 — Introduction to Artificial Intelligence</li>
           <li>CS5331 — Introduction to Quantum Computing</li>
+          <li>CS4000 — Individual Studies</li>
         </ul>
       </div>
     </div>
@@ -260,115 +510,69 @@
 
   <section id="publications">
     <h2>Publications</h2>
+    <p style="margin-top:0;color:var(--muted);font-size:.95rem">
+      Twenty-one published peer-reviewed papers, two Springer book chapters, and three journal articles under
+      review. Several were written with students I supervised or mentored, some of them undergraduates at the
+      time.
+    </p>
 
     <div class="pubgroup">
-      <h3>Books &amp; Chapters</h3>
+      <h3>Books &amp; chapters</h3>
       <ol class="pubs">
+        <li><b>B. Q. Tran</b>, A. H. Nguyen, A. D. Hoang, and S. Mengel, <i>Solving the Faculty Timetabling Problem via the Quantum Approximate Optimization Algorithm</i>, <span class="venue">Multi-disciplinary Trends in Artificial Intelligence — Lecture Notes in Computer Science</span>, Springer, 2026.</li>
         <li><b>B. Q. Tran</b>, C. K. Luong, and S. Mengel, <i>Quantum Patches for Efficient Learning</i>, <span class="venue">Multi-disciplinary Trends in Artificial Intelligence — Lecture Notes in Computer Science</span>, Springer, 2025.</li>
       </ol>
     </div>
 
     <div class="pubgroup">
-      <h3>Journal Articles</h3>
+      <h3>Journal articles</h3>
       <ol class="pubs">
+        <li>C. K. Luong, <b>B. Q. Tran</b>, and S. Mengel, “Lattice-preserving quantum convolutional neural networks: Parameter-efficient image classification via constrained Hamiltonian simulation,” <span class="venue">Transactions on Quantum Computing</span>, 2026. <i>Under review.</i></li>
         <li><b>B. Q. Tran</b>, N. B. Dehaghani, A. P. Aguiar, R. Wisniewski, and S. Mengel, “A trainable-embedding quantum physics-informed framework for multi-species reaction-diffusion systems,” <span class="venue">IEEE Transactions on Quantum Engineering</span>, 2026. <i>Under review.</i></li>
-        <li><b>B. Q. Tran</b>, C. K. Luong, V. Q. Nguyen, D. M. Chu, and S. Mengel, “Quantum patches: Enhancing robustness of quantum machine learning models,” <span class="venue">IEEE Transactions on Quantum Engineering</span>, 2025. <i>Under review.</i></li>
         <li>B. Thacker, J. Wang, Y. Zhang, <b>Q. B. Tran</b>, D. S. Vemula, and T. Kushimo, “From research to resources: Assessing student understanding and skills in quantum computing,” <span class="venue">European Journal of Physics</span>, vol. 47, no. 1, p. 015702, 2025.</li>
+        <li><b>B. Q. Tran</b>, C. K. Luong, V. Q. Nguyen, D. M. Chu, and S. Mengel, “Quantum patches: Enhancing robustness of quantum machine learning models,” <span class="venue">IEEE Transactions on Quantum Engineering</span>, 2025. <i>Under review.</i></li>
         <li>P. N. Giao, N. T. Son, B. N. Anh, <b>T. Q. Ban</b>, T. V. Dinh, and S.-H. Lee, “Edges of interpolating tetrahedron based encryption algorithm for 3D printing model,” <span class="venue">Journal of Advances in Information Technology</span>, vol. 11, no. 2, 2020.</li>
-        <li>N. T. Son <i>et al.</i>, “Implementing CCTV-based attendance taking support system using deep face recognition: A case study at FPT polytechnic college,” <span class="venue">Symmetry</span>, vol. 12, no. 2, p. 307, 2020.</li>
+        <li>N. T. Son <i>et al.</i>, “Implementing CCTV-based attendance taking support system using deep face recognition: A case study at FPT Polytechnic College,” <span class="venue">Symmetry</span>, vol. 12, no. 2, p. 307, 2020.</li>
         <li>N. T. Son, B. N. Anh, <b>T. Q. Ban</b>, and T. B. Duong, “A method to construct automatic object bounding-box estimation system using 3D cameras,” <span class="venue">International Journal of Science and Research (IJSR)</span>, vol. 6, no. 7, pp. 961–965, 2017.</li>
       </ol>
     </div>
 
     <div class="pubgroup">
-      <h3>Conference Proceedings</h3>
+      <h3>Selected conference proceedings</h3>
       <ol class="pubs">
         <li>N. B. Dehaghani, <b>B. Q. Tran</b>, S. Mengel, R. Wisniewski, and A. P. Aguiar, “A QPINN framework with quantum trainable embeddings for the lid-driven cavity problem,” in <span class="venue">Proc. IEEE Quantum Week 2026</span>, 2026.</li>
         <li>N. B. Dehaghani, <b>B. Q. Tran</b>, R. Wisniewski, S. Mengel, and A. P. Aguiar, “Quantum-inspired tensor networks for approximating PDE flow maps,” in <span class="venue">Proc. 2026 IEEE Int. Conf. on Quantum Control, Computing and Learning (QCCL)</span>, 2026.</li>
         <li><b>B. Q. Tran</b>, N. B. Dehaghani, R. Wisniewski, S. Mengel, and A. P. Aguiar, “Quantum-assisted trainable-embedding physics-informed neural networks for parabolic PDEs,” in <span class="venue">Proc. 2026 IEEE Int. Conf. on Quantum Control, Computing and Learning (QCCL)</span>, 2026. <b>Best Poster Award.</b></li>
         <li><b>B. Q. Tran</b>, D. M. Chu, H. T. Pham, V. Q. Nguyen, Q. A. Pham, and S. Mengel, “A comprehensive analysis of accuracy and robustness in quantum neural networks,” in <span class="venue">Proc. Int. Conf. on Quantum Computing Infrastructure and Technologies (QUANCOM) 2026</span>, 2026.</li>
         <li><b>B. Q. Tran</b>, H. T. Pham, and S. Mengel, “Solving advection-reaction-diffusion equations with quantum trainable embedding physics-informed neural networks,” in <span class="venue">Int. Conf. on Computational Science and Its Applications (ICCSA)</span>, Springer, 2026, pp. 365–376.</li>
-        <li>A. H. Nguyen, L. T. Nguyen, A. D. Do, and <b>B. Q. Tran</b>, “A comparative study of graph-based, community-based, and generative models for top-N recommendation,” in <span class="venue">Proc. 2025 7th Asia Conf. on Machine Learning and Computing</span>, 2025, pp. 111–116.</li>
-        <li>A. H. Nguyen <i>et al.</i>, “Integration of AI in STEM education: A systematic review,” in <span class="venue">Proc. 2025 14th Int. Conf. on Software and Computer Applications</span>, 2025, pp. 327–335.</li>
-        <li>N. T. Duong <i>et al.</i>, “Investigating market strength prediction with CNNs on candlestick chart images,” in <span class="venue">Proc. 2024 6th Asia Conf. on Machine Learning and Computing</span>, 2024, pp. 120–127.</li>
-        <li>D. T. Nguyen, <b>B. Q. Tran</b>, A. D. Tran, D. T. Than, and D. Q. Tran, “Object detection approach for stock chart patterns recognition in financial markets,” in <span class="venue">Proc. 2023 12th Int. Conf. on Software and Computer Applications</span>, 2023, pp. 150–158.</li>
-        <li>A. T. Tran, <b>B. Q. Tran</b>, and K. T. Luong, “Improvement for large-scale image data using fuzzy rough C-mean based unsupervised CNN clustering: An empirical study on designbyhumans.com,” in <span class="venue">Proc. 2023 12th Int. Conf. on Software and Computer Applications</span>, 2023, pp. 1–7.</li>
-        <li>T. Duc Phung, T. Van Nguyen, and <b>B. Quy Tran</b>, “Design and implementation a secured and distributed system using CBC, socket, and RMI technologies,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 238–243.</li>
-        <li><b>B. Quy Tran</b>, T. Van Nguyen, T. Duc Phung, V. Tan Nguyen, D. Duy Tran, and S. Tung Ngo, “Fu Covid-19 AI agent built on attention algorithm using a combination of Transformer, ALBERT model, and Rasa framework,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 22–31.</li>
-        <li><b>B. Quy Tran</b>, T. Van Nguyen, D. Duy Tran, A. Duy Tran, and H. Van Nguyen, “Accelerating exemplar-based image inpainting with GPU and CUDA,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 173–179.</li>
-        <li><b>T. Q. Ban</b>, P. L. Duong, N. H. Son, and T. Van Dinh, “Covid-19 disease simulation using GAMA platform,” in <span class="venue">2020 Int. Conf. on Computational Intelligence (ICCI)</span>, IEEE, 2020, pp. 246–251.</li>
-        <li><b>T. Q. Ban</b>, T. T. T. Nguyen, V. T. Long, P. D. Dung, and B. T. Tung, “A benchmarking of the effectiveness of modular exponentiation algorithms using the library GMP in C language,” in <span class="venue">2020 Int. Conf. on Computational Intelligence (ICCI)</span>, IEEE, 2020, pp. 237–241.</li>
-        <li><b>T. Q. Ban</b>, B. N. Anh, N. T. Son, and T. Van Dinh, “Survey of hyperledger blockchain frameworks: Case study in FPT university's cryptocurrency wallets,” in <span class="venue">Proc. 2019 8th Int. Conf. on Software and Computer Applications</span>, 2019, pp. 472–480.</li>
-        <li>N. T. Son, L. Van Thanh, <b>T. Q. Ban</b>, D. X. Hoa, and B. N. Anh, “An analyze on effectiveness of candlestick reversal patterns for Vietnamese stock market,” in <span class="venue">Proc. 1st Int. Conf. on Information Management and Management Science</span>, 2018, pp. 89–93.</li>
       </ol>
+
+      <details class="more">
+        <summary>Show all conference publications (17)</summary>
+        <ol class="pubs" start="6">
+          <li>A. H. Nguyen, L. T. Nguyen, A. D. Do, and <b>B. Q. Tran</b>, “A comparative study of graph-based, community-based, and generative models for top-N recommendation,” in <span class="venue">Proc. 2025 7th Asia Conf. on Machine Learning and Computing</span>, 2025, pp. 111–116.</li>
+          <li>A. H. Nguyen <i>et al.</i>, “Integration of AI in STEM education: A systematic review,” in <span class="venue">Proc. 2025 14th Int. Conf. on Software and Computer Applications</span>, 2025, pp. 327–335.</li>
+          <li>N. T. Duong <i>et al.</i>, “Investigating market strength prediction with CNNs on candlestick chart images,” in <span class="venue">Proc. 2024 6th Asia Conf. on Machine Learning and Computing</span>, 2024, pp. 120–127.</li>
+          <li>D. T. Nguyen, <b>B. Q. Tran</b>, A. D. Tran, D. T. Than, and D. Q. Tran, “Object detection approach for stock chart patterns recognition in financial markets,” in <span class="venue">Proc. 2023 12th Int. Conf. on Software and Computer Applications</span>, 2023, pp. 150–158.</li>
+          <li>A. T. Tran, <b>B. Q. Tran</b>, and K. T. Luong, “Improvement for large-scale image data using fuzzy rough C-mean based unsupervised CNN clustering: An empirical study on designbyhumans.com,” in <span class="venue">Proc. 2023 12th Int. Conf. on Software and Computer Applications</span>, 2023, pp. 1–7.</li>
+          <li>T. Duc Phung, T. Van Nguyen, and <b>B. Quy Tran</b>, “Design and implementation of a secured and distributed system using CBC, socket, and RMI technologies,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 238–243.</li>
+          <li><b>B. Quy Tran</b>, T. Van Nguyen, T. Duc Phung, V. Tan Nguyen, D. Duy Tran, and S. Tung Ngo, “FU Covid-19 AI agent built on attention algorithm using a combination of Transformer, ALBERT model, and Rasa framework,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 22–31.</li>
+          <li><b>B. Quy Tran</b>, T. Van Nguyen, D. Duy Tran, A. Duy Tran, and H. Van Nguyen, “Accelerating exemplar-based image inpainting with GPU and CUDA,” in <span class="venue">Proc. 2021 10th Int. Conf. on Software and Computer Applications</span>, 2021, pp. 173–179.</li>
+          <li><b>T. Q. Ban</b>, P. L. Duong, N. H. Son, and T. Van Dinh, “Covid-19 disease simulation using GAMA platform,” in <span class="venue">2020 Int. Conf. on Computational Intelligence (ICCI)</span>, IEEE, 2020, pp. 246–251.</li>
+          <li><b>T. Q. Ban</b>, T. T. T. Nguyen, V. T. Long, P. D. Dung, and B. T. Tung, “A benchmarking of the effectiveness of modular exponentiation algorithms using the library GMP in C language,” in <span class="venue">2020 Int. Conf. on Computational Intelligence (ICCI)</span>, IEEE, 2020, pp. 237–241.</li>
+          <li><b>T. Q. Ban</b>, B. N. Anh, N. T. Son, and T. Van Dinh, “Survey of Hyperledger blockchain frameworks: Case study in FPT University's cryptocurrency wallets,” in <span class="venue">Proc. 2019 8th Int. Conf. on Software and Computer Applications</span>, 2019, pp. 472–480.</li>
+          <li>N. T. Son, L. Van Thanh, <b>T. Q. Ban</b>, D. X. Hoa, and B. N. Anh, “An analysis on effectiveness of candlestick reversal patterns for the Vietnamese stock market,” in <span class="venue">Proc. 1st Int. Conf. on Information Management and Management Science</span>, 2018, pp. 89–93.</li>
+        </ol>
+      </details>
     </div>
 
     <p style="color:var(--muted);font-size:.9rem">Full and up-to-date list on <a href="https://scholar.google.com/citations?user=SXaU_Y8AAAAJ&amp;hl=en">Google Scholar</a>.</p>
   </section>
 
-  <section id="service">
-    <h2>Service &amp; Awards</h2>
-
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:.2rem 0 .7rem">Honors</h3>
-    <div class="card">
-      <div class="top"><span class="title">Best Poster Award</span><span class="date">2026</span></div>
-      <span class="where">IEEE Int. Conf. on Quantum Control, Computing and Learning (QCCL2026)</span>
-      <p>“Quantum-Assisted Trainable-Embedding Physics-Informed Neural Networks for Parabolic PDEs.”</p>
-    </div>
-
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Professional Service</h3>
-    <div class="grid2">
-      <div>
-        <p class="subk">Conference Reviewer</p>
-        <ul class="plain">
-          <li>ICSCA 2019 — 8th Int. Conf. on Software and Computer Applications</li>
-          <li>CIDDF 2025 — Int. Conf. in Cybersecurity, IoT, Data Science, and Digital Forensics</li>
-          <li>QUANCOM 2026 — Int. Conf. on Quantum Computing Infrastructure and Technologies</li>
-          <li>ICTA 2026 — 5th Int. Conf. on Advances in Information and Communication Technology</li>
-        </ul>
-      </div>
-      <div>
-        <p class="subk">Journal Reviewer</p>
-        <ul class="plain">
-          <li>Pattern Recognition — Q1, Elsevier</li>
-          <li>Neural Networks — Q1, Elsevier</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Certificates &amp; Competitive Awards</h3>
-    <div class="card">
-      <div class="top"><span class="title">Best Poster Award</span><span class="date">2026</span></div>
-      <span class="where">2026 IEEE Int. Conf. on Quantum Control, Computing and Learning (IEEE qCCL2026)</span>
-    </div>
-    <div class="card">
-      <div class="top"><span class="title">Quantum Project Certificate of Completion</span><span class="date">2025</span></div>
-      <span class="where">The Washington Institute for STEM, Entrepreneurship and Research</span>
-    </div>
-    <div class="card">
-      <div class="top"><span class="title">Top 7 Finalists — WISER Quantum Program 2025</span><span class="date">2025</span></div>
-      <span class="where">BQP Challenges</span>
-    </div>
-    <div class="card">
-      <div class="top"><span class="title">Development of Novel Quantum Algorithms Program</span><span class="date">2024</span></div>
-      <span class="where">Womanium</span>
-    </div>
-
-    <h3 style="color:var(--ink);font-size:1.05rem;margin:1.4rem 0 .7rem">Assistantships</h3>
-    <div class="card">
-      <div class="top"><span class="title">Distinguished Graduate Student Assistantship</span><span class="date">2023</span></div>
-      <span class="where">Texas Tech University</span>
-    </div>
-    <div class="card">
-      <div class="top"><span class="title">Teaching Assistantship</span><span class="date">2023</span></div>
-      <span class="where">Department of Computer Science, Texas Tech University</span>
-    </div>
-  </section>
-
   <section id="skills">
     <h2>Skills</h2>
 
-    <div class="skillrow"><div class="k">Research</div><div class="v">Quantum Machine Learning, Quantum Optimization, Financial Technology</div></div>
+    <div class="skillrow"><div class="k">Research</div><div class="v">Quantum machine learning, quantum optimization, quantum cybersecurity, financial technology</div></div>
 
     <div class="skillrow"><div class="k">Programming</div><div class="v tags">
       <span>C</span><span>C++</span><span>Python</span><span>Java</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span><span>Rust</span><span>Golang</span><span>Solidity</span><span>Motoko</span><span>HTML</span>
@@ -380,16 +584,23 @@
 
     <div class="skillrow"><div class="k">Languages</div><div class="v">English (fluent), Vietnamese (native), French (intermediate)</div></div>
 
-    <div class="skillrow"><div class="k">Soft skills</div><div class="v">Hard-working, active listening, teamwork, problem-solving, constructive criticism</div></div>
+    <div class="skillrow"><div class="k">Mentoring</div><div class="v">Application strategy, statement of purpose, cold-emailing professors, scholarship search, undergraduate research supervision</div></div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
     <p>
-      I am on the academic job market for the 2026&ndash;2027 hiring season. For research collaboration, teaching
-      enquiries, or my full CV including references, please write to
-      <a href="mailto:bantran@ttu.edu">bantran@ttu.edu</a>.
+      <b>Students:</b> if you are applying to funded master's or Ph.D. programmes in computer science or a
+      related field, write to me at <a href="mailto:billytran1804@gmail.com">billytran1804@gmail.com</a> with
+      a short note on where you are now and where you want to go. Attach your CV if you have one. I read every
+      message, though it can take me a week during teaching term.
     </p>
+    <p>
+      <b>Researchers and institutions:</b> for research collaboration, teaching enquiries, or my full CV
+      including references, please write to <a href="mailto:bantran@ttu.edu">bantran@ttu.edu</a>.
+      I am also on the academic job market for the 2026–2027 hiring season.
+    </p>
+    <a class="btn" href="mailto:billytran1804@gmail.com">Email me about mentoring</a>
   </section>
 
 </main>
