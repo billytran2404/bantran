@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,6 +38,19 @@
   nav a.cta{color:#fff;background:var(--accent);padding:.25rem .75rem;border-radius:999px}
   nav a.cta:hover{background:var(--accent-dark);color:#fff}
 
+  /* Language switch */
+  .langsw{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:.3rem}
+  .langsw button{
+    font:inherit;font-size:.82rem;font-weight:600;letter-spacing:.03em;cursor:pointer;
+    border:0;background:var(--card);color:var(--muted);padding:.22rem .6rem;
+  }
+  .langsw button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  .langsw button:hover:not([aria-pressed="true"]){color:var(--accent)}
+
+  /* Bilingual blocks: only the active language is shown */
+  [data-lang="en"] .lang-vi{display:none}
+  [data-lang="vi"] .lang-en{display:none}
+
   header.hero{
     max-width:var(--maxw);margin:0 auto;padding:2.5rem 1.25rem 1rem;
     display:flex;gap:1.8rem;align-items:center;flex-wrap:wrap;
@@ -67,7 +80,7 @@
   h3.sub:first-of-type{margin-top:.2rem}
 
   /* Fact strip */
-  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:1.2rem 0 .4rem}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.8rem;margin:1.2rem 0 .4rem}
   .fact{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
   .fact .n{display:block;font-size:1.5rem;font-weight:700;color:var(--accent-dark);line-height:1.2}
   .fact .l{font-size:.82rem;color:var(--muted)}
@@ -89,6 +102,18 @@
   .offer{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:8px;padding:1rem 1.1rem}
   .offer h4{margin:0 0 .4rem;font-size:1rem;color:var(--accent-dark)}
   .offer p{margin:0;font-size:.93rem;color:var(--muted)}
+
+  /* Success stories */
+  .story{
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:8px;padding:1rem 1.15rem;margin-bottom:1rem;
+  }
+  .story .top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+  .story .title{font-weight:700;color:var(--accent-dark);font-size:1.02rem}
+  .story .date{color:var(--muted);font-size:.86rem}
+  .story .where{display:block;color:var(--accent);font-size:.93rem;font-weight:600;margin-top:.15rem}
+  .story p{margin:.5rem 0 0;font-size:.95rem}
+  .story .src{font-size:.85rem;color:var(--muted);margin-top:.6rem}
 
   .callout{
     background:#fdf7f7;border:1px solid var(--line);border-left:4px solid var(--gold);
@@ -159,6 +184,10 @@
     <a href="#teaching">Teaching</a>
     <a href="#publications">Publications</a>
     <a href="#contact" class="cta">Work with me</a>
+    <span class="langsw" role="group" aria-label="Language / Ngôn ngữ">
+      <button type="button" data-setlang="en" aria-pressed="true">EN</button>
+      <button type="button" data-setlang="vi" aria-pressed="false">VI</button>
+    </span>
   </div>
 </nav>
 
@@ -168,7 +197,10 @@
     <h1>Ban Q. Tran</h1>
     <p class="role">Ph.D. Candidate in Computer Science, <a href="https://www.depts.ttu.edu/cs/">Texas Tech University</a>, USA<br>
     Study-abroad mentor for Vietnamese students</p>
-    <p class="tag">Vietnam → France → United States · three degrees, all funded</p>
+    <p class="tag">
+      <span class="lang-en">Vietnam → France → United States · three degrees, all funded</span>
+      <span class="lang-vi">Việt Nam → Pháp → Hoa Kỳ · ba bậc học, đều bằng học bổng toàn phần</span>
+    </p>
     <div class="links">
       <a href="mailto:billytran1804@gmail.com">✉ billytran1804@gmail.com</a>
       <a href="mailto:bantran@ttu.edu">✉ bantran@ttu.edu</a>
@@ -185,30 +217,53 @@
 
   <section id="overview">
     <h2>About</h2>
-    <p>
-      I am a Ph.D. candidate in Computer Science at Texas Tech University, working on
-      <b>quantum machine learning</b> under a Distinguished Graduate Student Assistantship.
-      I am also, and just as deliberately, a mentor to Vietnamese students who want to study abroad.
-    </p>
-    <p>
-      I did not take the fast route. I finished my engineering degree at HUST in 2004, spent twelve years
-      building software at FPT Software, taught for six years at FPT University, and only then went abroad —
-      first to France on an <b>Erasmus Mundus joint programme</b>, then to the United States on a
-      <b>funded Ph.D. assistantship</b>. I started my doctorate at an age when most people have decided that
-      door has closed. It had not.
-    </p>
-    <p>
-      That is the reason this page exists. I know the Vietnamese application pipeline from the inside — as an
-      applicant who was rejected before he was accepted, as a lecturer who wrote hundreds of recommendation
-      letters, and now as a researcher who sits on the other side of the table, reviewing for
-      <i>Pattern Recognition</i> and <i>Neural Networks</i> and reading student work every semester.
-    </p>
+    <div class="lang-en">
+      <p>
+        I am a Ph.D. candidate in Computer Science at Texas Tech University, working on
+        <b>quantum machine learning</b> under a Distinguished Graduate Student Assistantship.
+        I am also, and just as deliberately, a mentor to Vietnamese students who want to study abroad.
+      </p>
+      <p>
+        I did not take the fast route. I finished my engineering degree at HUST in 2004, spent twelve years
+        building software at FPT Software, taught for six years at FPT University, and only then went abroad —
+        first to France on an <b>Erasmus Mundus joint programme</b>, then to the United States on a
+        <b>funded Ph.D. assistantship</b>. I started my doctorate at an age when most people have decided that
+        door has closed. It had not.
+      </p>
+      <p>
+        That is the reason this page exists. I know the Vietnamese application pipeline from the inside — as an
+        applicant, as a lecturer who wrote hundreds of recommendation letters, and now as a researcher who sits
+        on the other side of the table, reviewing for <i>Pattern Recognition</i> and <i>Neural Networks</i> and
+        reading student work every semester.
+      </p>
+    </div>
+    <div class="lang-vi">
+      <p>
+        Tôi là nghiên cứu sinh Tiến sĩ ngành Khoa học Máy tính tại Texas Tech University, nghiên cứu về
+        <b>học máy lượng tử</b> với học bổng Distinguished Graduate Student Assistantship. Song song với đó,
+        tôi đồng hành cùng các bạn Việt Nam trên đường đi du học — đây là việc tôi làm một cách nghiêm túc,
+        không phải làm thêm cho vui.
+      </p>
+      <p>
+        Tôi không đi con đường nhanh. Tôi tốt nghiệp kỹ sư HUST năm 2004, làm phần mềm mười hai năm ở FPT
+        Software, dạy sáu năm ở Đại học FPT, rồi mới ra nước ngoài — đầu tiên là Pháp với
+        <b>học bổng Erasmus Mundus</b>, sau đó là Mỹ với <b>học bổng tiến sĩ toàn phần</b>. Tôi bắt đầu chương
+        trình tiến sĩ ở cái tuổi mà phần lớn mọi người đã tin rằng cánh cửa đó đã đóng lại. Nó chưa đóng.
+      </p>
+      <p>
+        Đó là lý do trang này tồn tại. Tôi hiểu quy trình nộp hồ sơ của người Việt từ bên trong — với tư cách
+        một ứng viên, một giảng viên đã viết hàng trăm thư giới thiệu, và bây giờ là một nhà nghiên cứu ngồi ở
+        phía bên kia bàn: phản biện cho <i>Pattern Recognition</i> và <i>Neural Networks</i>, và đọc bài của
+        sinh viên mỗi học kỳ.
+      </p>
+    </div>
 
     <div class="facts">
-      <div class="fact"><span class="n">3</span><span class="l">countries studied in</span></div>
-      <div class="fact"><span class="n">4</span><span class="l">degrees earned</span></div>
-      <div class="fact"><span class="n">22+</span><span class="l">university courses taught</span></div>
-      <div class="fact"><span class="n">21</span><span class="l">published papers</span></div>
+      <div class="fact"><span class="n">3</span><span class="l"><span class="lang-en">countries studied in</span><span class="lang-vi">quốc gia đã học</span></span></div>
+      <div class="fact"><span class="n">4</span><span class="l"><span class="lang-en">degrees earned</span><span class="lang-vi">bằng cấp</span></span></div>
+      <div class="fact"><span class="n">22</span><span class="l"><span class="lang-en">university courses taught</span><span class="lang-vi">môn đại học đã dạy</span></span></div>
+      <div class="fact"><span class="n">21</span><span class="l"><span class="lang-en">published papers</span><span class="lang-vi">bài báo đã công bố</span></span></div>
+      <div class="fact"><span class="n">$300k</span><span class="l"><span class="lang-en">largest scholarship won by a mentee</span><span class="lang-vi">học bổng lớn nhất một mentee giành được</span></span></div>
     </div>
   </section>
 
@@ -272,23 +327,32 @@
     </div>
 
     <div class="callout">
-      <b>What I take from this:</b> the funding existed at every step, but it was never advertised to me.
-      I found the Erasmus Mundus programme through a colleague, and the Texas Tech assistantship through a
-      cold email to a professor whose paper I had actually read. Most students I meet are not short on
-      ability — they are short on knowing which doors exist and how to knock on them.
+      <span class="lang-en"><b>What I take from this:</b> the funding existed at every step, but it was never
+      advertised to me. I found the Erasmus Mundus programme through a colleague, and the Texas Tech
+      assistantship through a cold email to a professor whose paper I had actually read. Most students I meet
+      are not short on ability — they are short on knowing which doors exist and how to knock on them.</span>
+      <span class="lang-vi"><b>Điều tôi rút ra:</b> tiền học bổng luôn có ở mọi chặng, nhưng chưa bao giờ có ai
+      quảng cáo nó cho tôi. Tôi biết Erasmus Mundus qua một đồng nghiệp, và biết suất assistantship ở Texas Tech
+      nhờ một lá thư gửi thẳng cho một giáo sư mà tôi đã thật sự đọc bài của ông ấy. Phần lớn các bạn tôi gặp
+      không thiếu năng lực — các bạn chỉ thiếu thông tin về việc có những cánh cửa nào và gõ cửa ra sao.</span>
     </div>
   </section>
 
   <section id="mentoring">
     <h2>Study-Abroad Mentoring</h2>
-    <p style="margin-top:0">
+    <p class="lang-en" style="margin-top:0">
       I work with a small number of Vietnamese students each cycle, mainly those applying to
-      <b>funded master's and Ph.D. programmes</b> in computer science, engineering and related fields in the
-      United States and Europe. I am not an agency and I do not take a commission from any university.
+      <b>funded master's and Ph.D. programmes</b> in the United States and Europe. I am not an agency and I do
+      not take a commission from any university.
+    </p>
+    <p class="lang-vi" style="margin-top:0">
+      Mỗi mùa tuyển sinh tôi chỉ đồng hành với một số ít bạn, chủ yếu là những bạn nộp
+      <b>chương trình thạc sĩ và tiến sĩ có học bổng</b> tại Mỹ và châu Âu. Tôi không phải trung tâm du học và
+      không nhận hoa hồng từ bất kỳ trường nào.
     </p>
 
-    <h3 class="sub">What I help with</h3>
-    <div class="offers">
+    <h3 class="sub"><span class="lang-en">What I help with</span><span class="lang-vi">Tôi giúp được những gì</span></h3>
+    <div class="offers lang-en">
       <div class="offer">
         <h4>Finding the right programmes</h4>
         <p>Building a realistic list — reach, match and safety — based on your actual profile rather than
@@ -320,38 +384,147 @@
         co-authors were undergraduates when we started.</p>
       </div>
     </div>
+    <div class="offers lang-vi">
+      <div class="offer">
+        <h4>Chọn đúng chương trình</h4>
+        <p>Lập một danh sách thực tế — trường mơ ước, trường vừa tầm, trường an toàn — dựa trên hồ sơ thật của
+        bạn chứ không dựa vào bảng xếp hạng. Và phân biệt chương trình nào thật sự có tiền, chương trình nào
+        chỉ nói là có.</p>
+      </div>
+      <div class="offer">
+        <h4>Liên hệ giáo sư</h4>
+        <p>Cách đọc một bài báo đủ kỹ để viết được lá thư đầu tiên khiến giáo sư trả lời, và cách follow-up mà
+        không thành phiền. Đây là bước có đòn bẩy lớn nhất cho một suất tiến sĩ có học bổng.</p>
+      </div>
+      <div class="offer">
+        <h4>Statement of purpose &amp; CV</h4>
+        <p>Dựng một mạch nghiên cứu mà hội đồng đọc là hiểu. Tôi đọc bản bạn viết và nói cho bạn biết người
+        xét hồ sơ sẽ nghĩ gì — chứ không phải điều bạn mong họ nghĩ.</p>
+      </div>
+      <div class="offer">
+        <h4>Thư giới thiệu</h4>
+        <p>Chọn người viết, cung cấp thông tin cho họ đúng cách, và một lá thư mạnh thì chứa những gì. Tôi đã
+        viết rất nhiều từ phía giảng viên và đọc rất nhiều từ phía phản biện.</p>
+      </div>
+      <div class="offer">
+        <h4>Học bổng &amp; assistantship</h4>
+        <p>Erasmus Mundus, assistantship của trường, fellowship của khoa — và cái timing quyết định việc bạn
+        có được đưa vào diện xét hay không.</p>
+      </div>
+      <div class="offer">
+        <h4>Có nghiên cứu trước khi nộp</h4>
+        <p>Cách có bài báo đầu tiên hoặc một dự án thật trong CV khi còn đang ở Việt Nam. Nhiều đồng tác giả
+        của tôi vẫn còn là sinh viên khi chúng tôi bắt đầu.</p>
+      </div>
+    </div>
 
-    <h3 class="sub">Why my advice is worth taking — and where it is not</h3>
-    <p>
-      I have been through the process as a Vietnamese applicant twice, to two different systems, at an age that
-      made both harder. I teach at a U.S. department and see admitted students' files and their first two years.
-      I review for two Q1 Elsevier journals and four international conferences, so I know what "research
-      potential" reads like on paper.
-    </p>
-    <p>
-      What I am <i>not</i>: an immigration lawyer, a visa service, or an expert on undergraduate admissions,
-      the UK, Australia, or non-technical fields. If your question is in one of those areas I will say so and
-      point you elsewhere rather than guess.
-    </p>
+    <h3 class="sub"><span class="lang-en">Why my advice is worth taking — and where it is not</span><span class="lang-vi">Vì sao nên nghe tôi — và ở đâu thì đừng</span></h3>
+    <div class="lang-en">
+      <p>
+        I have been through the process as a Vietnamese applicant twice, to two different systems, at an age
+        that made both harder. I teach at a U.S. department and see admitted students' files and their first
+        two years. I review for two Q1 Elsevier journals and four international conferences, so I know what
+        "research potential" reads like on paper.
+      </p>
+      <p>
+        What I am <i>not</i>: an immigration lawyer, a visa service, or an expert on undergraduate admissions,
+        the UK, Australia, or non-technical fields. If your question is in one of those areas I will say so and
+        point you elsewhere rather than guess.
+      </p>
+    </div>
+    <div class="lang-vi">
+      <p>
+        Tôi đã tự đi qua quy trình này hai lần với tư cách ứng viên Việt Nam, ở hai hệ thống khác nhau, và ở
+        cái tuổi khiến cả hai lần đều khó hơn. Tôi đang dạy trong một khoa ở Mỹ, nhìn thấy hồ sơ của sinh viên
+        được nhận và hai năm đầu của họ. Tôi phản biện cho hai tạp chí Q1 của Elsevier và bốn hội nghị quốc tế,
+        nên tôi biết "tiềm năng nghiên cứu" đọc lên trên giấy thì trông như thế nào.
+      </p>
+      <p>
+        Những gì tôi <i>không</i> phải: luật sư di trú, dịch vụ visa, hay người am hiểu tuyển sinh đại học,
+        thị trường Anh, Úc, hoặc các ngành phi kỹ thuật. Nếu câu hỏi của bạn rơi vào những mảng đó, tôi sẽ nói
+        thẳng và chỉ bạn sang người khác, thay vì đoán.
+      </p>
+    </div>
 
     <h3 class="sub">Students I have worked with</h3>
-    <p style="color:var(--muted);font-size:.95rem">
-      <!-- TODO (Ban): replace this paragraph with real, verifiable outcomes before publishing.
-           Suggested format, one line each, only what you can stand behind:
-             • "N. V. A. — M.Sc., KTH Royal Institute of Technology, Sweden, funded, 2025"
-             • "T. H. L. — Ph.D., University of Adelaide, Australia, full scholarship, 2024"
-           If you have written testimonials, add two or three short quotes with the student's initials
-           and consent. Do NOT publish aggregate numbers ("50+ students placed") unless you can document them —
-           parents and students do check, and an unverifiable claim costs more credibility than it buys. -->
-      Placement outcomes and student testimonials are listed here once each student has given consent.
-      If you would like to speak with a former mentee before deciding, write to me and I will put you in touch.
-    </p>
 
-    <p style="margin-top:1rem">
-      Mentoring places are limited and I take them on outside my research and teaching hours, so I usually work
-      with a handful of students per application cycle.
-    </p>
-    <a class="btn" href="#contact">Ask about mentoring →</a>
+    <div class="story">
+      <div class="top">
+        <span class="title">Nguyễn Hồng Anh — Ph.D., Computer Science</span>
+        <span class="date">Texas Tech University, USA · 2026</span>
+      </div>
+      <span class="where">Distinguished Graduate Student Assistantship — full funding, approx. US$300,000 over five years</span>
+      <div class="lang-en">
+        <p>
+          An engineering graduate of FPT University from Hà Giang, a mountainous province in northern Vietnam.
+          We began working together in the <b>QMOS Lab</b>, a research collaboration between FPT University and
+          Texas Tech, where he co-authored three peer-reviewed papers with me before he applied — on
+          recommendation systems, AI in STEM education, and quantum approximate optimization. That publication
+          record, not his test scores, is what made the funding decision straightforward for the committee.
+        </p>
+      </div>
+      <div class="lang-vi">
+        <p>
+          Cựu sinh viên kỹ thuật Đại học FPT, quê Hà Giang. Chúng tôi bắt đầu làm việc cùng nhau tại
+          <b>QMOS Lab</b> — phòng nghiên cứu hợp tác giữa Đại học FPT và Texas Tech. Trước khi nộp hồ sơ, bạn
+          đã đồng tác giả ba bài báo bình duyệt cùng tôi: về hệ khuyến nghị, AI trong giáo dục STEM, và thuật
+          toán tối ưu xấp xỉ lượng tử. Chính hồ sơ công bố đó — chứ không phải điểm thi — mới là thứ khiến hội
+          đồng cấp học bổng không phải đắn đo.
+        </p>
+      </div>
+      <p class="src">
+        <span class="lang-en">Covered by</span><span class="lang-vi">Báo chí đưa tin:</span>
+        <a href="https://vnexpress.net/cuu-sinh-vien-fptu-gianh-hoc-bong-tien-si-hon-7-5-ty-dong-tai-my-5073506.html" rel="noopener">VnExpress, 13 May 2026</a>
+      </p>
+    </div>
+
+    <div class="story">
+      <div class="top">
+        <span class="title">M.A., Communication Studies</span>
+        <span class="date">United States · enrolled Fall 2026</span>
+      </div>
+      <span class="where">Full tuition waiver plus a monthly fellowship covering living costs</span>
+      <div class="lang-en">
+        <p>
+          A secondary-school mathematics teacher with twenty years in the classroom, who did not use English
+          in daily work and was switching fields entirely. This case matters more to me than the first one:
+          it is the profile that every agency tells you is unfundable — wrong age, wrong subject, no research
+          background, no English-speaking job. The application still worked, because the strategy was built
+          around what twenty years of teaching actually demonstrates rather than around what she lacked.
+        </p>
+      </div>
+      <div class="lang-vi">
+        <p>
+          Một giáo viên Toán cấp hai với hai mươi năm đứng lớp, không dùng tiếng Anh trong công việc hằng ngày,
+          và chuyển hẳn sang một ngành khác. Với tôi, ca này còn đáng kể hơn ca đầu tiên: đây đúng là kiểu hồ sơ
+          mà mọi trung tâm đều bảo là không thể xin được học bổng — sai độ tuổi, sai ngành, không có nền nghiên
+          cứu, không có môi trường tiếng Anh. Hồ sơ vẫn thành công, vì chiến lược được xây quanh những gì hai
+          mươi năm dạy học thực sự chứng minh được, thay vì quanh những thứ chị ấy thiếu.
+        </p>
+      </div>
+      <p class="src">
+        <span class="lang-en">Name withheld at the mentee's request.</span>
+        <span class="lang-vi">Không nêu tên theo đề nghị của mentee.</span>
+      </p>
+    </div>
+
+    <div class="lang-en">
+      <p style="margin-top:1rem">
+        These are two cases, not a placement pipeline. I take mentees on outside my research and teaching hours
+        and work with a small number per application cycle, which is the honest reason I cannot promise
+        everyone a place. If you would like to speak with a former mentee before deciding, write to me and
+        I will ask them.
+      </p>
+    </div>
+    <div class="lang-vi">
+      <p style="margin-top:1rem">
+        Đây là hai trường hợp cụ thể, không phải một "đường dây" đưa người đi du học. Tôi nhận mentee ngoài giờ
+        nghiên cứu và giảng dạy, mỗi mùa tuyển sinh chỉ làm với vài bạn — đó là lý do thành thật vì sao tôi
+        không thể hứa nhận tất cả mọi người. Nếu anh/chị muốn nói chuyện trực tiếp với một mentee cũ trước khi
+        quyết định, cứ viết thư cho tôi, tôi sẽ hỏi bạn ấy.
+      </p>
+    </div>
+    <a class="btn" href="#contact"><span class="lang-en">Ask about mentoring →</span><span class="lang-vi">Hỏi về mentoring →</span></a>
   </section>
 
   <section id="research">
@@ -589,18 +762,32 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>
-      <b>Students:</b> if you are applying to funded master's or Ph.D. programmes in computer science or a
-      related field, write to me at <a href="mailto:billytran1804@gmail.com">billytran1804@gmail.com</a> with
-      a short note on where you are now and where you want to go. Attach your CV if you have one. I read every
-      message, though it can take me a week during teaching term.
-    </p>
-    <p>
-      <b>Researchers and institutions:</b> for research collaboration, teaching enquiries, or my full CV
-      including references, please write to <a href="mailto:bantran@ttu.edu">bantran@ttu.edu</a>.
-      I am also on the academic job market for the 2026–2027 hiring season.
-    </p>
-    <a class="btn" href="mailto:billytran1804@gmail.com">Email me about mentoring</a>
+    <div class="lang-en">
+      <p>
+        <b>Students and parents:</b> if you are considering a funded master's or Ph.D. programme abroad, write
+        to me at <a href="mailto:billytran1804@gmail.com">billytran1804@gmail.com</a> with a short note on
+        where you are now and where you want to go. Attach your CV if you have one. I read every message,
+        though it can take me a week during teaching term.
+      </p>
+      <p>
+        <b>Researchers and institutions:</b> for research collaboration, teaching enquiries, or my full CV
+        including references, please write to <a href="mailto:bantran@ttu.edu">bantran@ttu.edu</a>.
+      </p>
+    </div>
+    <div class="lang-vi">
+      <p>
+        <b>Học sinh, sinh viên và phụ huynh:</b> nếu bạn đang cân nhắc một chương trình thạc sĩ hoặc tiến sĩ
+        có học bổng ở nước ngoài, hãy viết cho tôi tại
+        <a href="mailto:billytran1804@gmail.com">billytran1804@gmail.com</a>, kể ngắn gọn bạn đang ở đâu và
+        muốn đi tới đâu. Có CV thì gửi kèm. Tôi đọc mọi thư, tuy trong mùa giảng dạy có thể mất khoảng một tuần
+        mới trả lời được.
+      </p>
+      <p>
+        <b>Nhà nghiên cứu và tổ chức:</b> về hợp tác nghiên cứu, mời giảng, hoặc CV đầy đủ kèm người tham
+        chiếu, xin viết tới <a href="mailto:bantran@ttu.edu">bantran@ttu.edu</a>.
+      </p>
+    </div>
+    <a class="btn" href="mailto:billytran1804@gmail.com"><span class="lang-en">Email me about mentoring</span><span class="lang-vi">Gửi email hỏi về mentoring</span></a>
   </section>
 
 </main>
@@ -608,6 +795,36 @@
 <footer>
   <p>© 2026 Ban Q. Tran &nbsp;·&nbsp; Built with plain HTML &amp; CSS, hosted on GitHub Pages.</p>
 </footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var buttons = document.querySelectorAll('[data-setlang]');
+
+  function apply(lang) {
+    if (lang !== 'vi') lang = 'en';
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang);
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.setlang === lang));
+    });
+    try { localStorage.setItem('bqt-lang', lang); } catch (e) {}
+  }
+
+  // 1) remembered choice, 2) browser language, 3) English
+  var initial = 'en';
+  try {
+    var saved = localStorage.getItem('bqt-lang');
+    if (saved === 'en' || saved === 'vi') initial = saved;
+    else if ((navigator.language || '').toLowerCase().indexOf('vi') === 0) initial = 'vi';
+  } catch (e) {}
+  apply(initial);
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.setlang); });
+  });
+})();
+</script>
 
 </body>
 </html>
